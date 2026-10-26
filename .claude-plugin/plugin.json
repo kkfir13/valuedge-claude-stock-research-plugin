@@ -1,0 +1,26 @@
+{
+  "name": "valuedge-stock-research",
+  "displayName": "ValuEdge Stock Research",
+  "version": "1.0.0",
+  "description": "Read-only stock research, screening, valuation, and authorized portfolio analysis through ValuEdge.",
+  "author": {
+    "name": "ValuEdge",
+    "email": "hello@valuedge.app",
+    "url": "https://valuedge.app"
+  },
+  "homepage": "https://valuedge.app/connect",
+  "repository": "https://github.com/kkfir13/valuedge-claude-stock-research-plugin",
+  "license": "MIT",
+  "keywords": [
+    "stock-research",
+    "valuation",
+    "portfolio-analysis",
+    "stock-screening",
+    "MCP"
+  ],
+  "icon": "./assets/logo-icon.jpg",
+  "documentationUrl": "https://valuedge.app/connect",
+  "supportUrl": "https://valuedge.app/help/contact",
+  "privacyPolicyUrl": "https://valuedge.app/privacy",
+  "termsOfServiceUrl": "https://valuedge.app/terms"
+}
