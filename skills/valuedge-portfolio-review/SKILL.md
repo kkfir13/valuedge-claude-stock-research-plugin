@@ -1,21 +1,24 @@
 ---
 name: valuedge-portfolio-review
-description: Review the user's ValuEdge portfolio, holdings, watchlist, or Smart Alerts when they ask for read-only account analysis.
+description: Review my investment portfolio, stock holdings, diversification, concentration, allocation, portfolio risk, valuation coverage or performance context using my connected ValuEdge account.
 ---
 
-# ValuEdge portfolio review
+# ValuEdge portfolio tracker and analysis
 
-Use this skill only when the user explicitly asks to analyze their own ValuEdge portfolio, holdings, watchlist, or Smart Alerts. Private account tools require the user's own ValuEdge authorization; do not ask for passwords, tokens, or another person's consent. If the connector is not connected or authorization is unavailable, explain the specific connection requirement and stop without substituting guessed holdings.
+Use this workflow only for an explicit request about the current user's authorized ValuEdge account. Read from `get_my_portfolio` and `analyze_my_portfolio` as supported by the live tools. Private data requires the user's own OAuth authorization and applicable plan entitlement.
 
-## Workflow
+## Method
 
-1. Identify the user's question and the minimum relevant account data needed. Use the live ValuEdge tool catalog and schemas; the documented read-only account tools are `get_my_portfolio`, `analyze_my_portfolio`, `get_my_watchlist`, and `get_my_smart_alerts`.
-2. Retrieve only the data needed for the request. These tools read account data; do not invoke them for general market questions.
-3. Summarize returned information with its as-of date, currency, source, and any missing fields or coverage limits. Distinguish the tool's reported metrics from your calculations and interpretations.
-4. For concentration, exposure, or portfolio-level metrics, use `analyze_my_portfolio` when its live schema supports the requested view. Do not reconstruct unsupported metrics from incomplete holdings.
-5. Treat missing, stale, or failed values as unavailable, never as zero. Do not invent holdings, prices, performance, weights, or alerts.
-6. Keep the response neutral and educational. Do not make trades, modify holdings, change a watchlist, create alerts, or give buy/sell/hold instructions.
+1. Identify the requested portfolio, date, base currency and question, relying on actual connected account data. Never infer that a displayed holding belongs to the user from a public stock question.
+2. Fetch the minimum information needed. Prefer `analyze_my_portfolio` for documented concentration, allocation, value coverage and risk metrics; use holdings data only to explain or verify returned evidence.
+3. Clearly distinguish a dated snapshot from live positions, and account-recorded values from independently verified market prices.
+4. Identify missing or stale pricing and Fair Value coverage; do not turn absent value into a zero-value holding or calculate precise portfolio performance from incomplete data.
+5. Ask before any proposed account modification; this skill itself is read-only. Do not place orders or rebalance brokerage accounts.
 
-## Data minimization
+## Example intents
 
-Use private account data only for this user-requested response. Include only the details needed to answer; do not reproduce full account records or expose one user's data to another. ValuEdge handles account data under its [Privacy Policy](https://valuedge.app/privacy).
+- "Analyze my portfolio concentration and largest holdings."
+- "Which of my positions lack reliable fair-value coverage?"
+- "Summarize my ValuEdge holdings and allocation risk."
+
+If authorization fails, describe the ValuEdge connection requirement. Do not solicit passwords or copy another account's holdings.
