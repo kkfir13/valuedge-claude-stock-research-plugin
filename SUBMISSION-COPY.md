@@ -7,7 +7,7 @@
 **Existing connector:** https://claude.ai/directory/valuedge
 **Remote MCP:** https://valuedge.app/mcp
 **Plugin slug:** `valuedge-stock-research` (preserved)
-**Display name:** ValuEdge — Stock Analysis, Valuation & Portfolios
+**Display name:** ValuEdge — Stock Analysis, Screener & Portfolio Tracker
 
 ## One-line summary
 
@@ -19,14 +19,13 @@ ValuEdge connects research and investment tracking to Claude. Research public co
 
 With your own ValuEdge authorization, review holdings, portfolio concentration, watchlists, Smart Alerts and tracked dividends. Additional write tools can update your ValuEdge watchlist or portfolio records **only when explicitly requested and confirmed**. There is no brokerage order execution or fund movement.
 
-The plugin packages seven task-specific Skills alongside the already published ValuEdge MCP connector. Research allowances and OAuth depend on the live tool and account plan. Results preserve data coverage, source dates and any withholding warnings; no investment outcome is guaranteed.
+The plugin packages eight task-specific Skills alongside the already published ValuEdge MCP connector. Research allowances and OAuth depend on the live tool and account plan. Results preserve data coverage, source dates and any withholding warnings; no investment outcome is guaranteed.
 
 ## Categories and search intent
 
 Preferred category: **Financial services**. Secondary category if the portal offers it: **Data & analytics**.
 
-Ten targeted manifest keywords, not a 92-keyword dump:
-stock analysis; stock valuation; intrinsic value; stock screener; portfolio analysis; portfolio tracker; fundamental analysis; technical analysis; dividend tracker; watchlist.
+**40 active, natural-intent keywords** are declared in `.claude-plugin/plugin.json`; a separate auditable `KEYWORDS.md` / `KEYWORDS.json` tracks the complete prior 92-term shortlist (66 core + 26 verification-dependent). The inventory is NOT itself a directory search index, and the 92 terms are not all inserted into the live manifest. Active terms include stock analysis, intrinsic value, stock screener, portfolio tracker, fundamental analysis, technical analysis, dividend tracker and smart alerts.
 
 Key phrases also appear naturally in the skill descriptions: fair value, DCF, margin of safety, undervalued stocks, RSI, moving averages, portfolio risk, stock comparison, dividend calendar, Smart Alerts.
 
@@ -58,4 +57,12 @@ Provide a dedicated review account through Claude's secure reviewer channel if r
 
 Test the actual installed plugin, its HTTPS MCP discovery, guest stock lookup, OAuth-gated research, user-scoped read and opt-in writes before selecting any Self-tested confirmation. The static checks in GitHub are not end-to-end Claude approval.
 
-**Status:** GitHub preparation only. Not submitted through Claude's portal by this file.
+**Status:** GitHub package preparation only. Not submitted through Claude's portal by this file.
+
+## Validator warnings (informational, not a reason to strip listing fields)
+
+In the 2026-11-12 developer portal screenshot, 7 checks passed; the validator warned about `documentationUrl`, `privacyPolicyUrl`, `supportUrl`, `termsOfServiceUrl` and `icon` because these are directory-only fields that some Claude Code validator versions do not recognize. **Keep them**: the Claude Plugin Directory reads these fields for the listing. Re-validate this version 1.2.0 after the merge; the screenshot only proves version 1.1.0 was accepted with non-blocking warnings.
+
+## First-value starter prompts
+
+Copy concise examples from [STARTER-PROMPTS.md](STARTER-PROMPTS.md); keep external-review test prompts in [REVIEW-TESTS.md](REVIEW-TESTS.md). Only claim completed submission after the portal confirms it.

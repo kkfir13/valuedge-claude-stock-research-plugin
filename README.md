@@ -1,4 +1,4 @@
-# ValuEdge — Stock Analysis, Valuation & Portfolios for Claude
+# ValuEdge — Stock Analysis, Screener & Portfolio Tracker for Claude
 
 A user-installable Claude plugin for **stock analysis, stock screening, intrinsic-value research, daily technical indicators, and authorized portfolio management**. This plugin adds focused Claude Skills to ValuEdge's existing, publicly listed remote MCP connector.
 
@@ -17,6 +17,7 @@ A user-installable Claude plugin for **stock analysis, stock screening, intrinsi
 | Portfolio tracker | "Review my holdings and concentration risk." | `valuedge-portfolio-review`; `get_my_portfolio`, `analyze_my_portfolio` |
 | Watchlist and alerts | "Show my saved stocks and Smart Alerts." | `valuedge-watchlist-management`; watchlist and alert tools |
 | Dividend tracker | "Show my tracked dividends and the dividend calendar." | `valuedge-dividend-research`; `get_dividend_calendar`, `get_my_dividend_tracker` |
+| Smart Alerts | "Which Smart Alerts changed for my holdings?" | `valuedge-smart-alerts`; `get_my_smart_alerts` |
 | Portfolio records | "Correct an entry in my portfolio transaction history." | `valuedge-portfolio-transactions`; authorized record-write tools |
 
 **Coverage is conditional.** Check each tool's current schema, authorization requirements, account quotas and data coverage. ValuEdge may withhold incomplete valuations or unsupported market data. Daily technical signals are not live intraday quotes.
@@ -26,7 +27,13 @@ A user-installable Claude plugin for **stock analysis, stock screening, intrinsi
 1. Install the plugin from its approved directory listing when published, or load this repository as a developer plugin for testing.
 2. Connect the existing **ValuEdge — Stock Research & Portfolio Analysis** remote connector when prompted. Both point to `https://valuedge.app/mcp`; this repository does not create a new MCP server.
 3. Sign in to your own ValuEdge account using the normal OAuth flow **only** when using account-scoped or metered research tools. An eligible plan and available research allowance may be required. Do not share API keys or passwords.
-4. Ask natural-language research questions or invoke one of the seven skills.
+4. Ask natural-language research questions or invoke one of the eight skills.
+
+## Search and onboarding
+
+This plugin declares **40 targeted discovery keywords** in the manifest and maintains a **92-term audited editorial inventory** in [KEYWORDS.md](KEYWORDS.md) / [KEYWORDS.json](KEYWORDS.json). The separate files do not automatically index keywords for Claude; the manifest and public listing supply metadata. There is no guaranteed ranking impact.
+
+Try the [starter prompts](STARTER-PROMPTS.md) to reach a real answer before connecting a private portfolio. Technical and dividend data are subject to source availability and authorization.
 
 ## Read/write boundary
 
@@ -40,7 +47,7 @@ Data is returned from ValuEdge as available; display source dates, warning/withh
 
 ## Directory submission
 
-Submission copy, keyword clusters and reviewer smoke tests are in [SUBMISSION-COPY.md](SUBMISSION-COPY.md), [DISCOVERY-PLAN.md](DISCOVERY-PLAN.md) and [REVIEW-TESTS.md](REVIEW-TESTS.md).
+Submission copy, keyword clusters and reviewer smoke tests are in [SUBMISSION-COPY.md](SUBMISSION-COPY.md), [DISCOVERY-PLAN.md](DISCOVERY-PLAN.md), [KEYWORDS.md](KEYWORDS.md), [STARTER-PROMPTS.md](STARTER-PROMPTS.md) and [REVIEW-TESTS.md](REVIEW-TESTS.md).
 
 **This GitHub repository being public does not mean the Claude plugin is approved or published.** The directory submission portal must validate and approve it separately.
 

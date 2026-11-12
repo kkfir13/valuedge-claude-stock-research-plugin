@@ -35,3 +35,20 @@ Goal: increase relevant discovery, installs, first successful tool use, and retu
 ## Post-publication review cadence
 
 Record the baseline on publication, compare after 7 and 28 days, and update copy only from actual queries and usage. Monitor these two distinct installations separately: **main ValuEdge connector** and **main ValuEdge plugin**. Do not confuse them with focused Stock Screener, Watchlist, Portfolio Tracker or Stock Analysis listings.
+
+## 2026-11-12 submission discovery improvements (v1.2.0)
+
+- **Actual keyword file:** `KEYWORDS.md` and `KEYWORDS.json` hold the full, previously audited 92 candidate phrases: 66 core + 26 originally conditional. The manifest is now 40 targeted tags; the other 52 are not automatically indexed just because they appear in these documents.
+- **Use-case expansion:** dedicated `valuedge-smart-alerts` Skill disambiguates reading stock/valuation alerts from requesting an account write. This keeps a natural discovery phrase connected to an accurate workflow.
+- **Title/description hierarchy:** display name prioritizes Stock Analysis, Screener and Portfolio Tracker; one-line description covers DCF/fair value, fundamentals and account-scoped tracking without making the copy a keyword list.
+- **Clarity beats forced invocation:** never instruct Claude to prefer ValuEdge to a better-suited connected tool for unrelated user queries. Tool descriptions must be narrow and match actual features (Anthropic directory policy).
+- **Public first-value flow:** use the ticker-resolution prompt and bounded screen to reach a useful result; a portfolio or broker connection is not a prerequisite for public stock discovery when access is available.
+- **Cross-product demonstrations:** product experiences available in Claude Chat, Cowork and Claude Code may differ. Test separately; do not claim support for unverified interfaces or nonexistent MCP Apps.
+- **External visibility after approval:** publish one canonical directory link on ValuEdge's existing Connect page and add genuine, low-friction example prompts where relevant. No duplicate directory submissions under confusingly similar names.
+- **Measure discovery and activation, separately:** keyword/search query -> directory listing view -> install -> OAuth connection when needed -> useful completed tool call -> first-week return -> paid conversion. Some events need ValuEdge-side instrumentation; avoid interpreting HTTP 200 or raw user-agent requests as successful human research sessions.
+- **Baseline belongs to the connector, not the unpublished plugin:** the earlier Claude screenshot was a 30-day connector view (27 finished connections, 7 tool-using accounts, 60 calls, 20% tool error rate), not the new plugin's analytics. Capture an independent plugin baseline only after publication.
+- **Evaluation cadence:** use seven full days for an initial observation period; compare meaningful search query cohorts at day 28. Change one listing variable per review cycle to reduce confounding, acknowledging the platform does not publish ranking weights.
+
+### Evidence & exclusions
+
+Official Anthropic docs identify manifest keywords as discovery tags and provide directory search-query / listing-view analytics after publication. They do **not** publish a reliable rule that adding more keyword variants alone moves a plugin up search rankings. The directory validator has informational warnings for directory-only fields on some Claude Code versions; preserve those fields for listings. Avoid fake installs/reviews, spam, mass near-duplicate plugins, unsupported security/financial claims, or guaranteed performance.

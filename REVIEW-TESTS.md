@@ -2,16 +2,24 @@
 
 ## Static review
 
-- [ ] `.claude-plugin/plugin.json` is valid JSON, keeps `name=valuedge-stock-research`, and has version 1.1.0.
+- [ ] `.claude-plugin/plugin.json` is valid JSON, keeps `name=valuedge-stock-research`, and has version 1.2.0.
 - [ ] `.mcp.json` has a direct server-name mapping with exactly one HTTPS `valuedge` remote endpoint; no nested `mcpServers` envelope.
-- [ ] All 7 `skills/*/SKILL.md` files have valid frontmatter name and description; names are unique, descriptions state when to use.
+- [ ] All 8 `skills/*/SKILL.md` files have valid frontmatter name and description; names are unique, descriptions state when to use.
 - [ ] Source has no credentials, executable install steps, unexpected network destinations, direct trade instructions, or fabricated market data.
 - [ ] Directory links, privacy, support and brand-icon assets are accessible.
 - [ ] Run `claude plugin validate <repo-root>` in a Claude CLI environment; this must pass **before** portal submission. The CLI is not run by creating this file.
 
+## Discovery inventory alignment
+
+- [ ] `KEYWORDS.json` parses as JSON and includes exactly 66 core + 26 conditional unique candidates (92).
+- [ ] `.claude-plugin/plugin.json` contains the same 40 active keywords as `KEYWORDS.json.active_manifest_keywords`, with no duplicates or competitor names.
+- [ ] All active tags correspond to available ValuEdge main MCP intents; use conditional access / freshness language for technicals, dividends and account records.
+- [ ] Preserve `icon`, `documentationUrl`, `supportUrl`, `privacyPolicyUrl`, `termsOfServiceUrl` despite non-blocking warnings in older validator versions. The **directory** uses them.
+- [ ] Run the portal's **Re-validate** on this new commit after merge; prior screenshot validated the earlier 1.1.0 commit, not this new version.
+
 ## MCP/Claude integration — NOT YET VERIFIED BY THIS CHECKLIST
 
-- [ ] Plugin appears in Claude Plugins with seven Skills and the ValuEdge remote connector.
+- [ ] Plugin appears in Claude Plugins with eight Skills and the ValuEdge remote connector.
 - [ ] `tools/list` discovers the expected live catalog on `https://valuedge.app/mcp`; compare source-tool names and authorization hints.
 - [ ] Guest `search_securities` succeeds for AAPL without a private account.
 - [ ] `get_stock_valuation`, `get_stock_fundamentals`, `get_stock_technicals`, `compare_stocks` clearly handle OAuth, allowances, data age and missing fields.
