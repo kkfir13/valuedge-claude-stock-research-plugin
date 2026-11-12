@@ -1,8 +1,6 @@
 {
-  "mcpServers": {
-    "valuedge": {
-      "type": "http",
-      "url": "https://valuedge.app/mcp"
-    }
+  "valuedge": {
+    "type": "http",
+    "url": "https://valuedge.app/mcp"
   }
 }

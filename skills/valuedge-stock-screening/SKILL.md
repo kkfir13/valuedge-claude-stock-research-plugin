@@ -1,18 +1,24 @@
 ---
 name: valuedge-stock-screening
-description: Screen supported public stocks with ValuEdge when the user asks for candidate discovery or a focused stock screen.
+description: Use ValuEdge's stock screener when the user wants to find undervalued stocks, search by margin of safety, screen dividend or quality stocks, or shortlist equities using specific supported filters.
 ---
 
-# ValuEdge stock screening
+# Stock screening with ValuEdge
 
-Use the ValuEdge screener for a bounded search of supported public securities. The documented universe is NYSE- and NASDAQ-listed securities. ValuEdge documents a candidate window of up to 60 and no more than 12 returned results; do not describe results as exhaustive or as the whole market.
+Use `screen_stocks` from the existing ValuEdge MCP connection when a user asks for candidate discovery or a stock screen. The endpoint is `https://valuedge.app/mcp`; never create a second account or request credentials.
 
-## Workflow
+## Method
 
-1. Translate the user's request into explicit, supported filters. Ask a concise follow-up only when a missing choice would materially change the screen.
-2. Inspect the live MCP catalog and `screen_stocks` schema. Use only available presets and parameters; never invent preset IDs, filters, exchanges, or output fields.
-3. Keep result limits within the documented maximum and candidate window. If the live schema or result indicates different current limits, report what the live response actually supports.
-4. Present candidates as a starting point for research, with the filters, date or freshness information returned, and any coverage caveats. Explain when a filter could not be applied.
-5. Do not rank a candidate as universally best, infer unsupported investment conclusions, or tell the user to buy, sell, or trade.
+1. Translate the request into the **live** tool's supported filters, presets, ranking, and result limits. Do not invent schema fields, filters, available exchanges, or universes. If a requested condition is unsupported, disclose the limitation.
+2. Use one appropriately bounded `screen_stocks` call first; follow with more precise research only when needed. Respect the user's ValuEdge account limits and OAuth requirements when returned.
+3. Label results as ValuEdge-sourced research candidates, not an exhaustive scan or investment recommendations. State applied filters, coverage, valuation freshness and data gaps, where supplied.
+4. When Fair Value, intrinsic value, or margin of safety is unavailable or withheld, omit the numerical claim rather than substituting a stale or speculative value.
+5. If a request fails, times out or returns no matches, distinguish **technical failure** from **valid zero matches** and offer a narrower supported screen or a retry. Never invent matches.
 
-If the screener is unavailable, fails, or returns no rows, state that plainly. A failed request is not evidence that no securities meet the criteria.
+## Example intents
+
+- "Find undervalued stocks with a positive margin of safety."
+- "Screen companies with positive free cash flow."
+- "Show dividend stocks that meet my filters."
+
+Never promise a market-wide ranking, guaranteed returns, or real-time coverage. Do not trade or change a user's account while screening.

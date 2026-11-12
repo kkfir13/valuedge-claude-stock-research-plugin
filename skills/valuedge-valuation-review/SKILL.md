@@ -1,18 +1,24 @@
 ---
 name: valuedge-valuation-review
-description: Review ValuEdge valuation and fundamentals for public companies, or compare two to six securities, when the user asks for stock research.
+description: Analyze stock valuation, intrinsic value, fair value, DCF assumptions, margin of safety, financial statements, fundamentals or compare stocks with ValuEdge when the user asks for evidence-based equity research.
 ---
 
-# ValuEdge valuation and fundamentals review
+# ValuEdge stock valuation and fundamental analysis
 
-Use this skill for public-company research using ValuEdge's read-only tools. The documented tools are `search_securities`, `get_stock_valuation`, `get_stock_fundamentals`, and `compare_stocks`; comparisons support two to six tickers. Inspect the live tool catalog and schemas before calling them.
+Use the existing ValuEdge MCP tools `search_securities`, `get_stock_valuation`, `get_stock_fundamentals` and `compare_stocks` as the live catalog permits.
 
-## Workflow
+## Method
 
-1. Resolve the company and listing. If a name, ticker, exchange, or share class is ambiguous, use `search_securities`; show plausible matches and ask the user to choose before calling issuer-specific tools.
-2. Call only the tool(s) needed for the question. Use `get_stock_valuation` for ValuEdge's returned valuation view, `get_stock_fundamentals` for returned financial data, and `compare_stocks` for an explicitly requested comparison of two to six tickers.
-3. Present reported fields as ValuEdge results. Preserve valuation method, assumptions, periods, currency, timestamps, and confidence or coverage metadata when returned. Clearly label any arithmetic or interpretation you add.
-4. Explain material missing, stale, or inconsistent inputs. Do not fill gaps with fabricated forecasts, prices, multiples, or a precise fair value. If a result lacks enough detail for a conclusion, say what is missing.
-5. Keep conclusions descriptive and balanced. Do not promise returns or accuracy, provide buy/sell/hold instructions, or imply a valuation is a guaranteed future price.
+1. Resolve ambiguous issuer, ticker, exchange, security type or share class with `search_securities` before requesting financials. Never silently switch listings.
+2. Use the minimum required tool calls. For an intrinsic-value or DCF question use `get_stock_valuation`; for financial health use `get_stock_fundamentals`; for side-by-side research use `compare_stocks` when its live inputs support the requested securities.
+3. Present ValuEdge's returned Fair Value, margin of safety, growth, profitability, multiples, periods, calculation basis, risks and dates only when actually supplied. Distinguish model output from a market quote and from your interpretation.
+4. Carry through valuation withholding, missing data, source limitations and data freshness. Never invent DCF assumptions, earnings, a valuation number, or a valuation model version; never substitute unavailable values with zero.
+5. Account entitlements and research quotas differ by tool. Follow an OAuth challenge or plan-limit explanation as returned; do not work around limits or promise free unlimited analysis.
 
-If a tool is disconnected, denied, or fails, name the unavailable result and stop short of a ValuEdge-backed conclusion. Do not reinterpret an error as zero or as proof that a security is unsupported.
+## Example intents
+
+- "What's the ValuEdge fair value and margin of safety of AAPL?"
+- "Explain MSFT's financial fundamentals and the assumptions behind its valuation."
+- "Compare GOOGL and META using their available valuation and balance-sheet evidence."
+
+Research only; no recommendation to buy or sell and no future-return guarantee.
